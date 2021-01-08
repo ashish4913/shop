@@ -1,0 +1,33 @@
+{%	extends	"base.html"	%}
+<html>
+<head>
+{%	block	title	%}
+    Checkout
+{%	endblock	%}
+</head>
+<body>
+{% block body %}
+		<h1 style="text-align: center; font-size: 60px; font-family: cursive;"   >Checkout</h1>
+		<br>
+		<br>
+		<div style="text-align: right;margin-right: 60px;"	class="order-info">
+				<h3 style="font-family:cursive ;font-size: 40px;">Your	order</h3>
+				<ul>
+						{%	for	item	in	cart	%}
+								<li style="font-size: 20px;">
+										{{	item.quantity	}}x	{{	item.product.name	}}
+										<span  >${{	item.total_price	}}</span>
+								</li>
+						{%	endfor	%}
+				</ul>
+				<p style="font-size: 20px;" >Total:	${{	cart.get_total_price	}}</p>
+		</div>
+		
+		<form style="margin-left: 100px; border: 3px solid black;"	action="."	method="post"	class="order-form">
+				{{	form.as_p	}}
+				<p><input	type="submit"	value="Place order"></p>
+				{%	csrf_token	%}
+		</form>
+{%	endblock	%}
+</body>
+</html>

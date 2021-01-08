@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- ... -->
+  <title>
+  {% block title %}
+ 
+  {% endblock %}</title>
+</head>
+<body>
+    <!-- header -->
+    
+<header style="border: 1px; background-color: rgb(118, 193, 236);" class="text-gray-600 body-font">
+  <div  class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span  class="ml-3 text-xl">MY SHOP</span>
+    </a>
+    <nav style="font-size: x-large; font-weight: 400;"class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+      <a href="/cart/" class="mr-5 hover:text-gray-900">Home</a>
+      <a class="mr-5 hover:text-gray-900">About Us</a>
+      <a class="mr-5 hover:text-gray-900">Contact Us</a>
+      
+    </nav>
+    <div style="font-size: x-large; font-weight: 400;">
+      {%	with	total_items=cart|length	%}
+      {%	if	cart|length	>	0	%}
+          Your	cart:	
+          <a	href="{%	url	'cartsession:cart_detail'	%}">
+              {{	total_items	}}	item{{	total_items|pluralize	}},
+              ${{	cart.get_total_price	}}
+          </a>
+          <a href="{% url 'cartsession:clear' %}">clear cart</a>
+      {%	else	%}
+          Your	cart	is	empty.
+      {%	endif	%}
+  {%	endwith	%}
+    </div>
+  </div>
+</header>
+
+    <!--header ends-->
+    {% block body %}{% endblock %}
+</body>
+</html>
