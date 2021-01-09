@@ -6,22 +6,25 @@
     </head>
 <body>
     {% block body %}
-    <section class="text-gray-600 body-font overflow-hidden">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="lg:w-4/5 mx-auto flex flex-wrap">
-            <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-              <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{product.name}}</h1>
-              <div class="flex mb-4">
-                <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
-                
-              </div>
-              <p class="leading-relaxed mb-4">{{product.description}}</p>
-              
-              <div class="flex">
-                <span class="title-font font-medium text-2xl text-gray-900">Rs {{product.price}}</span>
-                <br>
-                <br>
+    <section>
+
+      <div class="col-sm-9 padding-right">
+        <div class="product-details"><!--product-details-->
+          <div class="col-sm-5">
+            <div class="view-product">
+              <img src="https://source.unsplash.com/featured/?Speaker,Food,Cloths" alt="" />
+              <h3>ZOOM</h3>
+            </div>
+          
+          </div>
+          <div class="col-sm-7">
+            <div class="product-information"><!--/product-information-->
+              <img src="{% static 'images/product-details/new.jpg' %}" class="newarrival" alt="" />
+              <h2>{{product.name}}</h2>
+            
+              <img src="{ % sttic 'images/product-details/rating.png' %}" alt="" />
+              <span>
+                <span>{{product.price}}</span>
                 <form	action="{%	url	"cartsession:cart_add"	product.id	%}"	method="post">
                   <br>
                   <br>
@@ -34,14 +37,68 @@
                   
               </form>
 
+                  <i class="fa fa-shopping-cart"></i>
+                  Add to cart
+                </button>
+              </span>
+              <p><b>Availability:</b> In Stock</p>
+              
+              <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+            </div><!--/product-information-->
+          </div>
+        </div><!--/product-details-->
+        
+        <div class="category-tab shop-details-tab"><!--category-tab-->
+          <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+              <li><a href="#details" data-toggle="tab">Details</a></li>
+              
+              
+              <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane fade" id="details" >
+              <div class="col-sm-3">
+                {{product.description}}
+            </div>
+            </div>
+            
+            
+          
+            <div class="tab-pane fade active in" id="reviews" >
+              <div class="col-sm-12">
+                <ul>
+                  <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
+                  <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
+                  <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p><b>Write Your Review</b></p>
                 
-                
+                <form action="#">
+                  <span>
+                    <input type="text" placeholder="Your Name"/>
+                    <input type="email" placeholder="Email Address"/>
+                  </span>
+                  <textarea name="" ></textarea>
+                  <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                  <button type="button" class="btn btn-default pull-right">
+                    Submit
+                  </button>
+                </form>
               </div>
             </div>
-            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+            
           </div>
-        </div>
-      </section>
+        </div><!--/category-tab-->
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
       {% endblock %}
 </body>
 </html>

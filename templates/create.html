@@ -1,4 +1,4 @@
-{%	extends	"base.html"	%}
+{%	extends	"cartbase.html"	%}
 <html>
 <head>
 {%	block	title	%}
@@ -28,6 +28,9 @@
 				<p><input	type="submit"	value="Place order"></p>
 				{%	csrf_token	%}
 		</form>
+		<br>
+		<br>
+		
 {%	endblock	%}
 </body>
 </html>
